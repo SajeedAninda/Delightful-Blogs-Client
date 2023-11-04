@@ -4,8 +4,12 @@ import Lottie from "lottie-react";
 import { Link } from 'react-router-dom';
 
 const Register = () => {
-    let handleRegister=()=>{
-        
+    let handleRegister = (e) => {
+        e.preventDefault();
+        let name = e.target.name.value;
+        let email = e.target.email.value;
+        let password = e.target.password.value;
+        let imgURL = e.target.imgURL.value;
     }
 
 

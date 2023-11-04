@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
     "aos": "^2.3.4",
+    "firebase": "^10.5.2",
     "keen-slider": "^6.8.6",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.0",
