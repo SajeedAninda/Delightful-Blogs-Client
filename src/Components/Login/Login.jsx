@@ -6,7 +6,7 @@ import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
 
 const Login = () => {
-    let { login } = useAuth();
+    let { login, googleLogin, gitLogin } = useAuth();
     let navigate = useNavigate();
 
     let handleLogin = (e) => {
@@ -36,6 +36,39 @@ const Login = () => {
                 }
             });
     }
+
+    let handleGithub = () => {
+        gitLogin()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire(
+                    'Good job!',
+                    'Login Successful!',
+                    'success'
+                )
+                navigate(location?.state ? location.state : '/');
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
+
+    let handleGoogle = () => {
+        googleLogin()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire(
+                    'Good job!',
+                    'Login Successful!',
+                    'success'
+                )
+                navigate('/');
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
+
 
 
 
@@ -80,7 +113,7 @@ const Login = () => {
                                     <div>
                                         <div className="flex items-center justify-center space-x-4 mt-3">
                                             <button
-
+                                                onClick={handleGithub}
                                                 className="flex items-center py-3 px-6 text-sm uppercase rounded bg-white hover:bg-gray-100 text-[#033430] border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                                             >
                                                 <svg
@@ -96,7 +129,7 @@ const Login = () => {
                                                 Github
                                             </button>
                                             <button
-
+                                                onClick={handleGoogle}
                                                 className="flex items-center py-3 px-6 text-sm uppercase rounded bg-white hover:bg-gray-100 text-[#033430] border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                                             >
                                                 <svg
