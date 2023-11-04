@@ -16,7 +16,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-xl text-[#fcf4e9] rounded-md" : "text-xl p-2 text-[#fcf4e9]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md" : "text-lg p-2 text-[#fcf4e9]"
                         }
                     >
                         Home
@@ -25,7 +25,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/addBlogs"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-xl text-[#fcf4e9] rounded-md" : "text-xl p-2 text-[#fcf4e9]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md" : "text-lg p-2 text-[#fcf4e9]"
                         }
                     >
                         Add Blogs
@@ -34,7 +34,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/allBlogs"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-xl text-[#fcf4e9] rounded-md" : "text-xl p-2 text-[#fcf4e9]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md" : "text-lg p-2 text-[#fcf4e9]"
                         }
                     >
                         All Blogs
@@ -43,7 +43,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/featuredBlogs"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-xl text-[#fcf4e9] rounded-md" : "text-xl p-2 text-[#fcf4e9]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md" : "text-lg p-2 text-[#fcf4e9]"
                         }
                     >
                         Featured Blogs
@@ -52,7 +52,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/wishlist"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-xl text-[#fcf4e9] rounded-md" : "text-xl p-2 text-[#fcf4e9]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md" : "text-lg p-2 text-[#fcf4e9]"
                         }
                     >
                         Wishlist
