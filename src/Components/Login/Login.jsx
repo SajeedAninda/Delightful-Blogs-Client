@@ -1,14 +1,40 @@
 import React from 'react';
 import lottieLogin from "../../assets/Login/login.json"
 import Lottie from "lottie-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+    let { login } = useAuth();
+    let navigate = useNavigate();
+
     let handleLogin = (e) => {
         e.preventDefault();
         let email = e.target.email.value;
         let password = e.target.password.value;
-        console.log(email,password)
+
+        login(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+                Swal.fire(
+                    'Good job!',
+                    'Login Successful!',
+                    'success'
+                )
+                navigate('/');
+            })
+            .catch((error) => {
+                let errorCode = error.code;
+                if (errorCode === "auth/invalid-login-credentials") {
+                    return Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Invalid Email or Password!'
+                    })
+                }
+            });
     }
 
 
