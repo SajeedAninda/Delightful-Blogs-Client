@@ -1,16 +1,93 @@
 import React from 'react';
 import lottieRegister from "../../assets/Register/Register.json"
 import Lottie from "lottie-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import { getAuth, updateProfile } from 'firebase/auth';
+import { app } from '../Authentication/firebase.config';
+let auth = getAuth(app);
 
-const Register = () => {
+let Register = () => {
+    let { register, logOut } = useAuth();
+    let navigate = useNavigate();
+
     let handleRegister = (e) => {
         e.preventDefault();
         let name = e.target.name.value;
         let email = e.target.email.value;
         let password = e.target.password.value;
         let imgURL = e.target.imgURL.value;
+
+        if (password.length < 6) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password must be at least 6 characters long.'
+            });
+        }
+
+        if (!/[A-Z]/.test(password)) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password must contain at least one capital letter.'
+            });
+        }
+
+        if (!/\d/.test(password)) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password must contain at least one numeric character.'
+            });
+        }
+
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password must contain at least one special character.'
+            });
+        }
+
+        register(email, password)
+            .then((userCredential) => {
+                let user = userCredential.user;
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    photoURL: imgURL
+                }).then(() => {
+                    logOut()
+                        .then(() => {
+                            console.log("After Sign Up Logged out user to login again");
+                            Swal.fire(
+                                'Registration Successful!',
+                                'Please login with your email and password.',
+                                'success'
+                            );
+                            navigate('/login');
+                        }).catch((error) => {
+                            console.error("Error logging out:", error);
+                        });
+                }).catch((error) => {
+                    console.error("Error updating profile:", error);
+                });
+            })
+            .catch((error) => {
+                let errorCode = error.code;
+                if (errorCode === "auth/email-already-in-use") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'This email is already in use.'
+                    });
+                } else {
+                    console.error("Registration error:", error);
+                }
+            });
     }
+
 
 
 
