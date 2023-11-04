@@ -8,6 +8,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Login from './Components/Login/Login.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         element: <Homepage></Homepage>
       }
     ]
+  },
+  {
+    path: "/login",
+    element: <Login></Login>
   },
 ]);
 
