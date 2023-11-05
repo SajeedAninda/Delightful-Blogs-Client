@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const Wishlist = () => {
     let [wishlistData, setWishlistData] = useState([]);
     let { signedUser } = useAuth();
     let loggedUserEmail = signedUser?.email;
+    console.log(wishlistData);
 
 
     useEffect(() => {
@@ -80,13 +82,14 @@ const Wishlist = () => {
                                                     Delete From list
                                                 </button>
 
-                                                <button
-                                                    // onClick={() => handleDelete(list._id)}
-                                                    type="button"
-                                                    className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
-                                                >
-                                                    Details
-                                                </button>
+                                                <Link to={`blogDetails/${list.previousId}`}>
+                                                    <button
+                                                        type="button"
+                                                        className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
+                                                    >
+                                                        Details
+                                                    </button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
