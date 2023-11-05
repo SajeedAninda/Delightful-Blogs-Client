@@ -8,6 +8,11 @@ const AllBlogs = () => {
     let [blogsData, setBlogsData] = useState([]);
     let [loading, setLoading] = useState(true);
     let [search, setSearch] = useState("");
+    let [category, setCategory] = useState("");
+
+    const handleChange = (e) => {
+        setCategory(e.target.value);
+    };
 
     let handleSearch = (e) => {
         e.preventDefault();
@@ -33,27 +38,41 @@ const AllBlogs = () => {
     return (
         <div className='bg-[#fcf4e9] py-12'>
             <div className='w-[90%] mx-auto'>
-                <div className=' pb-12 text-center gap-2 flex flex-col justify-center items-center relative'>
+                <div className=' pb-6 text-center gap-2 flex flex-col justify-center items-center relative'>
                     <h1 className='text-center text-4xl font-bold text-[#1b1f20]'>All Blogs</h1>
                     <p className='w-[60%]'>Discover a diverse collection of thought-provoking blogs, from expert insights to inspiring stories, and stay informed and entertained with our extensive range of topics and articles</p>
                     <form onSubmit={handleSearch} className='w-full flex justify-center gap-2 mt-2'>
                         <input name="searchField" className="py-2 border-2 border-[#1b1f20] px-2 rounded-md placeholder:text-[#1b1f20] w-[30%]" type="text" placeholder='Search by title' />
                         <button type='submit' className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>Search</button>
                     </form>
-                    <div className='absolute right-2'>
+                    <div className='mt-3'>
                         <Box sx={{ minWidth: 120 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Category</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    // value={age}
                                     label="Category"
-                                // onChange={handleChange}
+                                    value={category}
+                                    onChange={handleChange}
+                                    sx={{
+                                        '& .MuiSelect-root': {
+                                            backgroundColor: '#1b1f20',
+                                        },
+                                        '& .MuiSelect-icon': {
+                                            color: '#1b1f20',
+                                        },
+                                    }}
                                 >
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    <MenuItem value="">All</MenuItem>
+                                    <MenuItem value="travel">Travel</MenuItem>
+                                    <MenuItem value="food">Food</MenuItem>
+                                    <MenuItem value="health">Health</MenuItem>
+                                    <MenuItem value="technology">Technology</MenuItem>
+                                    <MenuItem value="lifestyle">Lifestyle</MenuItem>
+                                    <MenuItem value="fashion">Fashion</MenuItem>
+                                    <MenuItem value="education">Education</MenuItem>
+
                                 </Select>
                             </FormControl>
                         </Box>
