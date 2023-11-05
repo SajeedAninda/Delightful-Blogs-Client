@@ -1,10 +1,14 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import LongDescription from './LongDescription';
+import useAuth from '../Hooks/useAuth';
 
 const BlogDetails = () => {
     let blogData = useLoaderData();
     let { title, photoUrl, shortDescription, longDescription, categoryName, userPhoto, userEmail } = blogData;
+    let { signedUser } = useAuth();
+    let currentUserEmail = signedUser?.email;
+    console.log(currentUserEmail, userEmail);
 
     return (
         <div className='bg-[#fcf4e9]'>
@@ -23,6 +27,14 @@ const BlogDetails = () => {
                     <div className='rounded-lg'>
                         <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(categoryName).toUpperCase()}</h3>
                     </div>
+                    {
+                        currentUserEmail === userEmail ?
+                            <div className='rounded-lg'>
+                                <button className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Update Blog</button>
+                            </div>
+                            :
+                            ""
+                    }
                 </div>
                 <LongDescription longDescription={longDescription} />
             </div>

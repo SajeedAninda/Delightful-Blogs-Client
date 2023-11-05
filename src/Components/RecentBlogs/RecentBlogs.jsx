@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 const RecentBlogs = () => {
     let { signedUser } = useAuth();
     let currentUserEmail = signedUser?.email;
+    console.log(currentUserEmail);
 
     let [recentBlogsData, setRecentBlogsData] = useState([]);
     useEffect(() => {
@@ -18,12 +19,12 @@ const RecentBlogs = () => {
     }, [])
 
     let handleAddToWishlist = (id) => {
-        if(!signedUser){
+        if (!signedUser) {
             return Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Please Login to add to Wishlist!'
-              })
+            })
         }
 
         let specificBlog = recentBlogsData.find(blog => blog._id === id);
