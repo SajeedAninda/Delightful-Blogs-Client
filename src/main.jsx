@@ -14,6 +14,7 @@ import AuthProvider from './Components/Authentication/AuthProvider.jsx'
 import AddBlogs from './Components/Add Blogs/AddBlogs.jsx'
 import PrivateRoute from './Components/Authentication/PrivateRoute.jsx'
 import AllBlogs from './Components/AllBlogs/AllBlogs.jsx'
+import BlogDetails from './Components/BlogDetails/BlogDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
       {
         path: "/allBlogs",
         element: <AllBlogs></AllBlogs>
+      },
+      {
+        path: "/allBlogs/:id",
+        element: <BlogDetails></BlogDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/allBlogs/${params.id}`)
       },
     ]
   },
