@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddBlogs = () => {
     let [category, setCategory] = useState("travel");
-    // let axios = useAxios();
+    let navigate = useNavigate();
 
     let handleCategory = (e) => {
         setCategory(e.target.value);
     }
     let { signedUser } = useAuth();
     let userEmail = signedUser.email;
+    let userPhoto = signedUser.photoURL;
 
     let postedAt = new Date();
 
@@ -22,7 +24,7 @@ const AddBlogs = () => {
         let photoUrl = e.target.photo.value;
         let shortDescription = e.target.shortDescription.value;
         let longDescription = e.target.longDescription.value;
-        let blog = { title, categoryName, photoUrl, shortDescription, longDescription, userEmail, postedAt }
+        let blog = { title, categoryName, photoUrl, shortDescription, longDescription, userEmail, userPhoto, postedAt }
         // console.log(blog);
         axios.post("http://localhost:5000/blogs", blog, {
             headers: {
@@ -31,12 +33,13 @@ const AddBlogs = () => {
         })
             .then((response) => {
                 console.log(response.data);
-                if(response.data.insertedId){
+                if (response.data.insertedId) {
                     Swal.fire(
                         'Good job!',
                         'Blog Added Successfully!',
                         'success'
                     )
+                    navigate("/");
                 }
             })
             .catch((error) => {
