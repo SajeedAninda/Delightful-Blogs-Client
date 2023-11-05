@@ -8,10 +8,10 @@ const AllBlogs = () => {
     let [blogsData, setBlogsData] = useState([]);
     let [loading, setLoading] = useState(true);
     let [search, setSearch] = useState("");
-    let [category, setCategory] = useState("");
+    let [categoryFilter, setCategoryFilter] = useState("");
 
     const handleChange = (e) => {
-        setCategory(e.target.value);
+        setCategoryFilter(e.target.value);
     };
 
     let handleSearch = (e) => {
@@ -23,7 +23,7 @@ const AllBlogs = () => {
     useEffect(() => {
         setLoading(true);
 
-        axios.get(`http://localhost:5000/blogs?title=${search}`)
+        axios.get(`http://localhost:5000/blogs?title=${search}&categoryName=${categoryFilter}`)
             .then((res) => {
                 setBlogsData(res.data);
                 setLoading(false);
@@ -32,7 +32,7 @@ const AllBlogs = () => {
                 console.error(error);
                 setLoading(false);
             });
-    }, [search]);
+    }, [search,categoryFilter]);
 
 
     return (
@@ -53,7 +53,7 @@ const AllBlogs = () => {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     label="Category"
-                                    value={category}
+                                    value={categoryFilter}
                                     onChange={handleChange}
                                     sx={{
                                         '& .MuiSelect-root': {
