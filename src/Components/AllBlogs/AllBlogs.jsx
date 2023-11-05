@@ -4,13 +4,18 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsBookmarkStar } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const AllBlogs = () => {
     let [blogsData, setBlogsData] = useState([]);
     let [loading, setLoading] = useState(true);
     let [search, setSearch] = useState("");
     let [categoryFilter, setCategoryFilter] = useState("");
+    let { signedUser } = useAuth();
+    let currentUserEmail = signedUser?.email;
 
+    
     const handleChange = (e) => {
         setCategoryFilter(e.target.value);
     };
@@ -34,6 +39,36 @@ const AllBlogs = () => {
                 setLoading(false);
             });
     }, [search, categoryFilter]);
+
+    let handleAddToWishlist = (id) => {
+        if (!signedUser) {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Login to add to Wishlist!'
+            })
+        }
+
+        let specificBlog = blogsData.find(blog => blog._id === id);
+        let { _id, title, photoUrl, shortDescription, categoryName } = specificBlog;
+        let previousId = _id;
+        let blogItems = { title, photoUrl, shortDescription, categoryName, currentUserEmail, previousId };
+
+        axios.post('http://localhost:5000/wishlist', blogItems)
+            .then(response => {
+                console.log('Post request successful', response.data);
+                if (response.data.insertedId) {
+                    Swal.fire(
+                        'Good job!',
+                        'Added to wishlist',
+                        'success'
+                    )
+                }
+            })
+            .catch(error => {
+                console.error('Error posting data', error);
+            });
+    }
 
 
     return (
@@ -108,7 +143,7 @@ const AllBlogs = () => {
                                             </Link>
 
                                             <Link>
-                                                <button className='bg-[#1b1f20]  border-2 border-[#1b1f20] rounded-lg font-bold flex gap-2 items-center text-white px-3 py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
+                                                <button onClick={() => handleAddToWishlist(blogData._id)} className='bg-[#1b1f20]  border-2 border-[#1b1f20] rounded-lg font-bold flex gap-2 items-center text-white px-3 py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
                                                     Add Wishlist
                                                     <BsBookmarkStar></BsBookmarkStar>
                                                 </button>
