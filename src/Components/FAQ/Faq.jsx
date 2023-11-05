@@ -10,6 +10,9 @@ import faqLottie from "../../assets/FAQ/faqLottie.json"
 const Faq = () => {
     return (
         <div className='bg-[#fcf4e9]'>
+            <div>
+                <h1 className='text-center text-4xl font-bold pt-12 text-[#1b1f20]'>Frequently Asked Questions</h1>
+            </div>
             <div className='w-[90%] h-fit mx-auto flex justify-between items-center py-12'>
                 <div className='flex-1'>
                     <Accordion style={{ backgroundColor: '#fcf4e9', border: "2px solid #1b1f20", padding: "8px", marginBottom: '2px' }}>

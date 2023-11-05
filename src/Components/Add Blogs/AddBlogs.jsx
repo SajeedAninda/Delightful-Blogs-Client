@@ -3,8 +3,19 @@ import React, { useState } from 'react';
 const AddBlogs = () => {
     let [category, setCategory] = useState("travel");
 
-    let handleCategory = () => {
+    let handleCategory = (e) => {
         setCategory(e.target.value);
+    }
+
+    let handleAddBlogs = (e) => {
+        e.preventDefault();
+        let title = e.target.title.value;
+        let categoryName = category;
+        let photoUrl = e.target.photo.value;
+        let shortDescription = e.target.shortDescription.value;
+        let longDescription = e.target.longDescription.value;
+        let blog = { title, categoryName, photoUrl, shortDescription, longDescription }
+        console.log(blog);
     }
 
     return (
@@ -22,10 +33,10 @@ const AddBlogs = () => {
                                 </div>
 
                                 <div class="lg:col-span-2">
-                                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                    <form onSubmit={handleAddBlogs} class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                         <div class="md:col-span-3">
                                             <label for="title" className='text-base font-medium text-[#1b1f20]'>Blog Title</label>
-                                            <input type="text" name="title" id="title" class="h-10 border mt-1 rounded px-4 w-full bg-white" value="" required />
+                                            <input type="text" name="title" id="title" class="h-10 border-2 mt-1 rounded px-4 w-full bg-white" required />
                                         </div>
 
                                         <div onChange={handleCategory} value={category} name="category" class="relative h-10 w-72 min-w-[200px] mt-6">
@@ -45,24 +56,23 @@ const AddBlogs = () => {
 
                                         <div class="md:col-span-5">
                                             <label className='text-base font-medium text-[#1b1f20]' for="photo">Image URL</label>
-                                            <input type="text" name="photo" id="photo" class="h-10 border mt-1 rounded px-4 w-full bg-white" value="" required />
+                                            <input type="text" name="photo" id="photo" class="h-10 border-2 mt-1 rounded px-4 w-full bg-white" required />
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label className='text-base font-medium text-[#1b1f20]' for="shortDescription">Short Description</label>
-                                            <input type="text" name="shortDescription" id="shortDescription" class="h-10 border mt-1 rounded px-4 w-full bg-white" value="" required />
+                                            <input type="text" name="shortDescription" id="shortDescription" class="h-10 border-2 mt-1 rounded px-4 w-full bg-white" required />
                                         </div>
 
                                         <div class="md:col-span-5">
                                             <label for="longDescription" className='text-base font-medium text-[#1b1f20]'>Long Description</label>
-                                            <textarea className='mt-1 border h-32 rounded w-full' name="longDescription" id="longDescription" required></textarea>
+                                            <textarea className='mt-1 border-2 h-32 rounded w-full' name="longDescription" id="longDescription" required></textarea>
                                         </div>
 
-                                        <button class="md:col-span-5 border-2 border-[#1b1f20] py-2 font-bold bg-[#1b1f20] text-[#fcf4e9] rounded-lg text-lg hover:bg-[#fcf4e9] hover:text-[#1b1f20]">
+                                        <button type='submit' class="md:col-span-5 border-2 border-[#1b1f20] py-2 font-bold bg-[#1b1f20] text-[#fcf4e9] rounded-lg text-lg hover:bg-[#fcf4e9] hover:text-[#1b1f20]">
                                             Submit
                                         </button>
-
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
