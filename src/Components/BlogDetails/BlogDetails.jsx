@@ -1,14 +1,13 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import LongDescription from './LongDescription';
 import useAuth from '../Hooks/useAuth';
 
 const BlogDetails = () => {
     let blogData = useLoaderData();
-    let { title, photoUrl, shortDescription, longDescription, categoryName, userPhoto, userEmail } = blogData;
+    let {_id, title, photoUrl, shortDescription, longDescription, categoryName, userPhoto, userEmail } = blogData;
     let { signedUser } = useAuth();
     let currentUserEmail = signedUser?.email;
-    console.log(currentUserEmail, userEmail);
 
     return (
         <div className='bg-[#fcf4e9]'>
@@ -30,7 +29,9 @@ const BlogDetails = () => {
                     {
                         currentUserEmail === userEmail ?
                             <div className='rounded-lg'>
+                                <Link to={`/updateBlog/${_id}`}>
                                 <button className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Update Blog</button>
+                                </Link>
                             </div>
                             :
                             ""
