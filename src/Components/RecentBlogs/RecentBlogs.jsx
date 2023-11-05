@@ -25,7 +25,7 @@ const RecentBlogs = () => {
                                 </div>
 
                                 <div className='grow inline-block rounded-lg'>
-                                    <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-bold bg-[#fcf4e9]'>{blogData.categoryName}</h3>
+                                    <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(blogData.categoryName).toUpperCase()}</h3>
                                 </div>
                                 <h2 className='text-xl grow text-[#1b1f20] font-bold text-left'>{blogData.title}</h2>
                                 <p className='grow'>{blogData.shortDescription}</p>

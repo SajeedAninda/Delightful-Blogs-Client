@@ -13,7 +13,7 @@ import Register from './Components/Register/Register.jsx'
 import AuthProvider from './Components/Authentication/AuthProvider.jsx'
 import AddBlogs from './Components/Add Blogs/AddBlogs.jsx'
 import PrivateRoute from './Components/Authentication/PrivateRoute.jsx'
-import AllBlogs from './Components/Add Blogs/AllBlogs/AllBlogs.jsx'
+import AllBlogs from './Components/AllBlogs/AllBlogs.jsx'
 
 const router = createBrowserRouter([
   {
