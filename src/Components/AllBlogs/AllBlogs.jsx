@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsBookmarkStar } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const AllBlogs = () => {
     let [blogsData, setBlogsData] = useState([]);
@@ -32,7 +33,7 @@ const AllBlogs = () => {
                 console.error(error);
                 setLoading(false);
             });
-    }, [search,categoryFilter]);
+    }, [search, categoryFilter]);
 
 
     return (
@@ -98,16 +99,20 @@ const AllBlogs = () => {
                                         <h2 className='text-xl grow text-[#1b1f20] font-bold text-left'>{blogData.title}</h2>
                                         <p className='grow'>{blogData.shortDescription}</p>
 
-                                        <div className='grow flex gap-3 mt-2'>
-                                            <button className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
-                                                Details
-                                                <AiOutlineArrowRight></AiOutlineArrowRight>
-                                            </button>
+                                        <div className='grow flex gap-3 mt-1'>
+                                            <Link to={`blogDetails/${blogData._id}`}>
+                                                <button className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
+                                                    Details
+                                                    <AiOutlineArrowRight></AiOutlineArrowRight>
+                                                </button>
+                                            </Link>
 
-                                            <button className='bg-[#1b1f20]  border-2 border-[#1b1f20] rounded-lg font-bold flex gap-2 items-center text-white px-3 py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
-                                                Add Wishlist
-                                                <BsBookmarkStar></BsBookmarkStar>
-                                            </button>
+                                            <Link>
+                                                <button className='bg-[#1b1f20]  border-2 border-[#1b1f20] rounded-lg font-bold flex gap-2 items-center text-white px-3 py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
+                                                    Add Wishlist
+                                                    <BsBookmarkStar></BsBookmarkStar>
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 )

@@ -32,7 +32,7 @@ const RecentBlogs = () => {
                                 <p className='grow'>{blogData.shortDescription}</p>
 
                                 <div className='grow flex gap-3 mt-1'>
-                                    <Link to={`allBlogs/${blogData._id}`}>
+                                    <Link to={`blogDetails/${blogData._id}`}>
                                         <button className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
                                             Details
                                             <AiOutlineArrowRight></AiOutlineArrowRight>
