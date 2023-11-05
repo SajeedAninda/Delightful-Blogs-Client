@@ -11,7 +11,7 @@ const BlogDetails = () => {
             <div className='w-[90%] mx-auto py-16 flex flex-col space-y-6'>
                 <h1 className='text-5xl text-[#1b1f20] font-bold'>{title}</h1>
                 <img className='w-full object-cover rounded-lg' src={photoUrl} alt="" />
-                <h3 className='text-xl text-[#1b1f20] font-bold'>{shortDescription}</h3>
+                <h3 className='text-2xl text-[#1b1f20] font-bold'>{shortDescription}</h3>
                 <div className='flex gap-2 justify-start items-center space-x-3'>
                     <div className='flex gap-2 items-center'>
                         <img className='w-[70px] rounded-full' src={userPhoto} alt="" />
