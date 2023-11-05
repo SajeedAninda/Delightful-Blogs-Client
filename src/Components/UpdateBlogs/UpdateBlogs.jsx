@@ -1,12 +1,46 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateBlogs = () => {
     let blogsData = useLoaderData();
-    let [category, setCategory] = useState("travel");
-    let { _id, title, photoUrl, shortDescription, longDescription, categoryName } = blogsData;
+
     let handleCategory = (e) => {
         setCategory(e.target.value);
+    }
+    let { _id, title, photoUrl, shortDescription, longDescription, categoryName } = blogsData;
+    let [category, setCategory] = useState(categoryName);
+
+    let handleUpdate = (e) => {
+        e.preventDefault();
+        let title = e.target.title.value;
+        let categoryName = category;
+        let photoUrl = e.target.photo.value;
+        let shortDescription = e.target.shortDescription.value;
+        let longDescription = e.target.longDescription.value;
+        let updateData = { title, categoryName, photoUrl, shortDescription, longDescription };
+
+        console.log(_id);
+
+        axios.patch(`http://localhost:5000/updateBlog/${_id}`, updateData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                console.log(response.data);
+                if (response.data.modifiedCount > 0) {
+                    Swal.fire(
+                        'Good job!',
+                        'Blog Updated Successfully!',
+                        'success'
+                    )
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     return (
@@ -24,7 +58,7 @@ const UpdateBlogs = () => {
                                 </div>
 
                                 <div class="lg:col-span-2">
-                                    <form class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                    <form onSubmit={handleUpdate} class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                         <div class="md:col-span-3">
                                             <label for="title" className='text-base font-medium text-[#1b1f20]'>Blog Title</label>
                                             <input defaultValue={title} type="text" name="title" id="title" class="h-10 border-2 mt-1 rounded px-4 w-full bg-white" required />
@@ -61,7 +95,7 @@ const UpdateBlogs = () => {
                                         </div>
 
                                         <button type='submit' class="md:col-span-5 border-2 border-[#1b1f20] py-2 font-bold bg-[#1b1f20] text-[#fcf4e9] rounded-lg text-lg hover:bg-[#fcf4e9] hover:text-[#1b1f20]">
-                                            Submit
+                                            Update
                                         </button>
                                     </form>
                                 </div>
