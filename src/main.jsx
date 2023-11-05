@@ -13,6 +13,7 @@ import Register from './Components/Register/Register.jsx'
 import AuthProvider from './Components/Authentication/AuthProvider.jsx'
 import AddBlogs from './Components/Add Blogs/AddBlogs.jsx'
 import PrivateRoute from './Components/Authentication/PrivateRoute.jsx'
+import AllBlogs from './Components/Add Blogs/AllBlogs/AllBlogs.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
       {
         path: "/addBlogs",
         element: <PrivateRoute><AddBlogs></AddBlogs></PrivateRoute>
-      }
+      },
+      {
+        path: "/allBlogs",
+        element: <AllBlogs></AllBlogs>
+      },
     ]
   },
   {
