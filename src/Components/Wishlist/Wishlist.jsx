@@ -42,7 +42,7 @@ const Wishlist = () => {
 
     return (
         <div className='bg-[#fcf4e9]'>
-            <div className='w-[90%] mx-auto grid grid-cols-2 gap-10 py-12'>
+            <div className='w-[90%] h-screen mx-auto grid grid-cols-2 gap-10 py-12'>
                 {
                     wishlistData.length === 0 ?
                         <div className=" flex justify-center items-center">
