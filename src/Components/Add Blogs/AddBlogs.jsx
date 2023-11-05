@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import useAuth from '../Hooks/useAuth';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AddBlogs = () => {
     let [category, setCategory] = useState("travel");
+    // let axios = useAxios();
 
     let handleCategory = (e) => {
         setCategory(e.target.value);
     }
+    let { signedUser } = useAuth();
+    let userEmail = signedUser.email;
+
+    let postedAt = new Date();
 
     let handleAddBlogs = (e) => {
         e.preventDefault();
@@ -14,8 +22,27 @@ const AddBlogs = () => {
         let photoUrl = e.target.photo.value;
         let shortDescription = e.target.shortDescription.value;
         let longDescription = e.target.longDescription.value;
-        let blog = { title, categoryName, photoUrl, shortDescription, longDescription }
-        console.log(blog);
+        let blog = { title, categoryName, photoUrl, shortDescription, longDescription, userEmail, postedAt }
+        // console.log(blog);
+        axios.post("http://localhost:5000/blogs", blog, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                console.log(response.data);
+                if(response.data.insertedId){
+                    Swal.fire(
+                        'Good job!',
+                        'Blog Added Successfully!',
+                        'success'
+                    )
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
     }
 
     return (
