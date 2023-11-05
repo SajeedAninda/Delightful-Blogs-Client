@@ -14,6 +14,7 @@ const AddBlogs = () => {
     let { signedUser } = useAuth();
     let userEmail = signedUser.email;
     let userPhoto = signedUser.photoURL;
+    let author_name = signedUser?.displayName;
 
     let postedAt = new Date();
 
@@ -24,8 +25,8 @@ const AddBlogs = () => {
         let photoUrl = e.target.photo.value;
         let shortDescription = e.target.shortDescription.value;
         let longDescription = e.target.longDescription.value;
-        let blog = { title, categoryName, photoUrl, shortDescription, longDescription, userEmail, userPhoto, postedAt }
-        // console.log(blog);
+        let blog = { title, categoryName, photoUrl, shortDescription, longDescription, userEmail, userPhoto, postedAt, author_name }
+        
         axios.post("http://localhost:5000/blogs", blog, {
             headers: {
                 'Content-Type': 'application/json',
