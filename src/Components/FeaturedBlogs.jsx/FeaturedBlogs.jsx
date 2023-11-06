@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
-import './FeaturedBlogs.css';
+import './featured.css'
 
 const FeaturedBlogs = () => {
     let [data, setData] = useState([]);
@@ -31,7 +31,7 @@ const FeaturedBlogs = () => {
             sortable: true,
         },
         {
-            name: 'User Photo',
+            name: 'Author Image',
             cell: (row) => (
                 <img
                     src={row.userPhoto}
@@ -43,18 +43,20 @@ const FeaturedBlogs = () => {
     ];
 
     return (
-        <div className='w-[90% mx-auto]'>
-            <div className="featured-blog">
-                <DataTable
-                    title="Featured Blogs"
-                    columns={columns}
-                    data={data}
-                    defaultSortField="title"
-                    pagination
-                    striped={true}
-                    highlightOnHover={true}
-                    pointerOnHover={true}
-                />
+        <div className='blogs-container'>
+            <div>
+                <div className="featured-blogs">
+                    <DataTable
+                        title="Featured Blogs"
+                        columns={columns}
+                        data={data}
+                        defaultSortField="title"
+                        pagination
+                        striped={true}
+                        highlightOnHover={true}
+                        pointerOnHover={true}
+                    />
+                </div>
             </div>
         </div>
     );

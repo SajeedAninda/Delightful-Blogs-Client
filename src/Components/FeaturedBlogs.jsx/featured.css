@@ -1,7 +1,8 @@
-/* FeaturedBlogs.css */
+.blogs-container{
+    background-color: #fcf4e9;
+}
 
 .featured-blogs {
-    background-color: #fcf4e9;
     padding: 70px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -12,5 +13,3 @@
     height: 50px;
     border-radius: 100%;
 }
-
-/* Add more CSS rules for further customization */

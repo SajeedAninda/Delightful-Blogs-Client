@@ -42,7 +42,7 @@ const Wishlist = () => {
 
     return (
         <div className='bg-[#fcf4e9]'>
-            <div className='w-[90%] h-full mx-auto grid grid-cols-2 gap-10 py-12'>
+            <div className='w-[90%] h-full mx-auto flex flex-col justify-center items-center gap-10 py-12'>
                 {
                     wishlistData.length === 0 ?
                         <div className=" flex justify-center items-center">
@@ -52,9 +52,9 @@ const Wishlist = () => {
                         (
                             wishlistData.map((list) => (
                                 <div className=" place-items-center" key={list._id}>
-                                    <div className="bg-[#fcf4e9] rounded-md shadow-lg mb-12 py-5 h-[400px] w-fit">
+                                    <div className="bg-[#fcf4e9] rounded-md shadow-lg mb-12 py-5 h-fit w-fit">
                                         <div className="md:flex md:flex-col px-4 leading-none max-w-4xl">
-                                            <div className='flex'>
+                                            <div className='flex gap-6'>
                                                 <div className="flex-none grow">
                                                     <img
                                                         src={list.photoUrl}
@@ -70,27 +70,28 @@ const Wishlist = () => {
                                                         <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(list.categoryName).toUpperCase()}</h3>
                                                     </div>
                                                     <p className="px-4 my-4 text-sm text-left grow">{list.shortDescription}</p>
+                                                    <div className="text-md font-bold flex gap-3 grow">
+                                                        <button
+                                                            onClick={() => handleDelete(list._id)}
+                                                            type="button"
+                                                            className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
+                                                        >
+                                                            Delete From list
+                                                        </button>
+
+                                                        <Link to={`blogDetails/${list.previousId}`}>
+                                                            <button
+                                                                type="button"
+                                                                className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
+                                                            >
+                                                                Details
+                                                            </button>
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div className="text-md font-bold flex gap-3 grow">
-                                                <button
-                                                    onClick={() => handleDelete(list._id)}
-                                                    type="button"
-                                                    className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
-                                                >
-                                                    Delete From list
-                                                </button>
 
-                                                <Link to={`blogDetails/${list.previousId}`}>
-                                                    <button
-                                                        type="button"
-                                                        className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
-                                                    >
-                                                        Details
-                                                    </button>
-                                                </Link>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
