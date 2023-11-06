@@ -8,7 +8,7 @@ const Footer = () => {
             <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
-                        <a href="#" class="flex items-center">
+                        <a href="#" class="flex items-center md:flex-col lg:flex-row">
                             <img src={logo} class="w-[100px] mr-3" alt="Logo" />
                             <span class="self-center text-[#fcf4e9] text-3xl font-semibold whitespace-nowrap">Delightful Blogs</span>
                         </a>

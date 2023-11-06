@@ -14,7 +14,7 @@ const Navbar = () => {
     }
     return (
         <div className='bg-[#1b1f20] h-fit '>
-            <div className='w-[90%] py-2 mx-auto flex justify-between items-center'>
+            <div className='w-[90%] py-4 lg:py-2 mx-auto flex flex-col lg:flex-row gap-2 md:gap-0 justify-between items-center'>
 
                 <div className='flex-1 flex justify-start'>
                     <img className='w-[85px]' src={logo} alt="" />
@@ -25,7 +25,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
                         }
                     >
                         Home
@@ -34,7 +34,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/addBlogs"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
                         }
                     >
                         Add Blogs
@@ -43,7 +43,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/allBlogs"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
                         }
                     >
                         All Blogs
@@ -52,7 +52,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/featuredBlogs"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
                         }
                     >
                         Featured Blogs
@@ -61,7 +61,7 @@ const Navbar = () => {
                     <NavLink
                         to={"/wishlist"}
                         className={({ isActive, isPending }) =>
-                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
                         }
                     >
                         Wishlist

@@ -54,7 +54,7 @@ const RecentBlogs = () => {
                 <div>
                     <h1 className='text-center text-4xl font-bold pb-12 text-[#1b1f20]'>Our Recent Blogs</h1>
                 </div>
-                <div className='grid grid-cols-3 gap-14'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
                     {
                         recentBlogsData.map(blogData =>
                             <div key={blogData._id} className='flex flex-col gap-3'>
