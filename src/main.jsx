@@ -44,26 +44,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/blogDetails/:id",
-        element: <BlogDetails></BlogDetails>,
+        element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
       },
       {
         path: "allBlogs/blogDetails/:id",
-        element: <BlogDetails></BlogDetails>,
+        element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
       },
       {
         path: "/wishlist",
-        element: <Wishlist></Wishlist>
+        element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
       },
       {
         path: "wishlist/blogDetails/:id",
-        element: <BlogDetails></BlogDetails>,
+        element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
       },
       {
         path: "/updateBlog/:id",
-        element: <UpdateBlogs></UpdateBlogs>,
+        element: <PrivateRoute><UpdateBlogs></UpdateBlogs></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
       },
     ]
