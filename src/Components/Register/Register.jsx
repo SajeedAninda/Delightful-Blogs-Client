@@ -93,7 +93,7 @@ let Register = () => {
 
     return (
         <div className='bg-[#fcf4e9]'>
-            <div className='w-[90%] mx-auto flex flex-row-reverse justify-between items-center'>
+            <div className='w-[90%] mx-auto flex flex-col md:flex-row-reverse justify-between items-center'>
                 <div className="min-h-screen  py-6 flex flex-col justify-center sm:py-12">
                     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
                         <div

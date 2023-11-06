@@ -87,7 +87,7 @@ const Login = () => {
 
     return (
         <div className='bg-[#fcf4e9]'>
-            <div className='w-[90%] mx-auto flex justify-between items-center'>
+            <div className='w-[90%] mx-auto flex flex-col lg:flex-row justify-between items-center'>
                 <div className="min-h-screen  py-6 flex flex-col justify-center sm:py-12">
                     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
                         <div
