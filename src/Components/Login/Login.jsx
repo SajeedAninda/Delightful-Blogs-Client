@@ -24,7 +24,7 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
-                axios.post('http://localhost:5000/jwt', user)
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data)
                     })
@@ -52,7 +52,7 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
-                axios.post('http://localhost:5000/jwt', user)
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data)
                     })
@@ -72,7 +72,7 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
-                axios.post('http://localhost:5000/jwt', user)
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
                     .then(res => {
                         console.log(res.data)
                     })
