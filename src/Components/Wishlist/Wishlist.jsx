@@ -54,7 +54,7 @@ const Wishlist = () => {
                                 <div className=" place-items-center" key={list._id}>
                                     <div className="bg-[#fcf4e9] rounded-md shadow-lg mb-12 py-5 h-fit w-fit">
                                         <div className="md:flex md:flex-col px-4 leading-none max-w-4xl">
-                                            <div className='flex gap-6'>
+                                            <div className='flex flex-col md:flex-row gap-6'>
                                                 <div className="flex-none grow">
                                                     <img
                                                         src={list.photoUrl}
