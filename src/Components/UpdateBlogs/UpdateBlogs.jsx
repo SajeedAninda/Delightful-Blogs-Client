@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
 
 const UpdateBlogs = () => {
     let blogsData = useLoaderData();
+    let navigate = useNavigate();
 
     let handleCategory = (e) => {
         setCategory(e.target.value);
@@ -22,7 +23,6 @@ const UpdateBlogs = () => {
         let longDescription = e.target.longDescription.value;
         let updateData = { title, categoryName, photoUrl, shortDescription, longDescription };
 
-        console.log(_id);
 
         axios.patch(`http://localhost:5000/updateBlog/${_id}`, updateData, { withCredentials: true }, {
             headers: {
@@ -37,6 +37,7 @@ const UpdateBlogs = () => {
                         'Blog Updated Successfully!',
                         'success'
                     )
+                    navigate(`/allBlogs/blogDetails/${_id}`)
                 }
             })
             .catch((error) => {
