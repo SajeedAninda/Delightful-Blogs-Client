@@ -26,8 +26,8 @@ const AddBlogs = () => {
         let shortDescription = e.target.shortDescription.value;
         let longDescription = e.target.longDescription.value;
         let blog = { title, categoryName, photoUrl, shortDescription, longDescription, userEmail, userPhoto, postedAt, author_name }
-        
-        axios.post("http://localhost:5000/blogs", blog, {
+
+        axios.post("http://localhost:5000/blogs", blog, { withCredentials: true }, {
             headers: {
                 'Content-Type': 'application/json',
             },

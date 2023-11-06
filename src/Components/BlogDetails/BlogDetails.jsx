@@ -35,9 +35,9 @@ const BlogDetails = () => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/comments?blogId=${_id}`)
+        axios.get(`http://localhost:5000/comments?blogId=${_id}`, { withCredentials: true })
             .then(response => {
-                console.log(setComments(response.data));
+                setComments(response.data);
 
             })
             .catch(error => {
@@ -61,7 +61,7 @@ const BlogDetails = () => {
                         <h1 className='text-4xl hidden md:block font-bold text-[#1b1f20]'>||</h1>
                     </div>
                     <div className='rounded-lg'>
-                        <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(categoryName).toUpperCase()}</h3>
+                        <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(categoryName)?.toUpperCase()}</h3>
                     </div>
                     {
                         currentUserEmail === userEmail ?
@@ -102,7 +102,7 @@ const BlogDetails = () => {
                         </div>
                 }
                 {
-                    comments.map(comment =>
+                    comments?.map(comment =>
                         <div className='w-full md:w-2/4 py-8 px-4 mt-4 rounded-md bg-red-200 flex items-center justify-start'>
                             <div className='w-[10%]'>
                                 <img className='w-[60px] rounded-full' src={comment.commentUserPhoto} alt="" />

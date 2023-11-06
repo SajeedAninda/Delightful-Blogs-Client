@@ -12,7 +12,7 @@ const Wishlist = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/wishlist?email=${loggedUserEmail}`)
+        axios.get(`http://localhost:5000/wishlist?email=${loggedUserEmail}`, { withCredentials: true })
             .then(response => {
                 setWishlistData(response.data);
             })
@@ -50,7 +50,7 @@ const Wishlist = () => {
                         </div>
                         :
                         (
-                            wishlistData.map((list) => (
+                            wishlistData?.map((list) => (
                                 <div className=" place-items-center" key={list._id}>
                                     <div className="bg-[#fcf4e9] rounded-md shadow-lg mb-12 py-5 h-fit w-fit">
                                         <div className="md:flex md:flex-col px-4 leading-none max-w-4xl">
@@ -67,7 +67,7 @@ const Wishlist = () => {
                                                     <p className="px-4 text-2xl font-bold grow">{list.title}</p>
                                                     <hr className="hr-text" data-content="" />
                                                     <div className="text-md flex justify-between px-4 my-2 grow">
-                                                        <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(list.categoryName).toUpperCase()}</h3>
+                                                        <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(list.categoryName)?.toUpperCase()}</h3>
                                                     </div>
                                                     <p className="px-4 my-4 text-sm text-left grow">{list.shortDescription}</p>
                                                     <div className="text-md font-bold flex gap-3 grow">

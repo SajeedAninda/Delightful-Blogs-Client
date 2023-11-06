@@ -2,12 +2,15 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from "../../assets/Logo/logo.png"
 import useAuth from '../Hooks/useAuth';
+import axios from 'axios';
 
 const Navbar = () => {
     let { signedUser, loading, logOut } = useAuth();
     let handleLogout = () => {
         logOut()
             .then(() => {
+                axios.post("http://localhost:5000/logout", signedUser?.email, { withCredentials: true })
+                    .res(console.log(res.data));
             }).catch((error) => {
                 console.log(error);
             });

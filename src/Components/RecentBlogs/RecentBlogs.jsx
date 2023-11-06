@@ -56,14 +56,14 @@ const RecentBlogs = () => {
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
                     {
-                        recentBlogsData.map(blogData =>
+                        recentBlogsData?.map(blogData =>
                             <div key={blogData._id} className='flex flex-col gap-3'>
                                 <div className='rounded-lg grow relative'>
                                     <img className='w-full h-[400px] object-cover rounded-lg' src={blogData.photoUrl} alt="" />
                                 </div>
 
                                 <div className='grow inline-block rounded-lg'>
-                                    <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(blogData.categoryName).toUpperCase()}</h3>
+                                    <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(blogData.categoryName)?.toUpperCase()}</h3>
                                 </div>
                                 <h2 className='text-xl grow text-[#1b1f20] font-bold text-left'>{blogData.title}</h2>
                                 <p className='grow'>{blogData.shortDescription}</p>

@@ -46,12 +46,16 @@ const router = createBrowserRouter([
       {
         path: "/blogDetails/:id",
         element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`, {
+          credentials: 'include',
+        })
       },
       {
         path: "allBlogs/blogDetails/:id",
         element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`,{
+          credentials: 'include',
+        })
       },
       {
         path: "/wishlist",
@@ -60,7 +64,9 @@ const router = createBrowserRouter([
       {
         path: "wishlist/blogDetails/:id",
         element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`,{
+          credentials: 'include',
+        })
       },
       {
         path: "/updateBlog/:id",
