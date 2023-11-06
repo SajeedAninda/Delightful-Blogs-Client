@@ -1,13 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import LongDescription from './LongDescription';
 import useAuth from '../Hooks/useAuth';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const BlogDetails = () => {
+    let [comments, setComments] = useState([]);
     let blogData = useLoaderData();
     let { _id, title, photoUrl, shortDescription, longDescription, categoryName, userPhoto, userEmail, author_name } = blogData;
     let { signedUser } = useAuth();
     let currentUserEmail = signedUser?.email;
+    let commentUserName = signedUser?.displayName;
+    let commentUserPhoto = signedUser?.photoURL;
+    let commentedBlogId = _id;
+
+    let handleComment = (e) => {
+        e.preventDefault();
+        let commentText = e.target.commentsArea.value;
+        let commentsData = { commentText, commentUserName, commentUserPhoto, commentedBlogId };
+
+        axios.post("http://localhost:5000/comments", commentsData)
+            .then(response => {
+                console.log(response.data);
+                if (response.data.insertedId) {
+                    Swal.fire({
+                        title: "Good job!",
+                        text: "Comment Posted!",
+                        icon: "success"
+                    });
+                    e.target.commentsArea.value = "";
+                }
+            })
+    }
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/comments?blogId=${_id}`)
+            .then(response => {
+                console.log(setComments(response.data));
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }, [])
+    
+    console.log(comments)
 
     return (
         <div className='bg-[#fcf4e9]'>
@@ -50,7 +88,7 @@ const BlogDetails = () => {
 
                         <div>
                             <div><h2 className='text-3xl text-[#1b1f20] font-bold'>Comments</h2></div>
-                            <form className='w-[50%]'>
+                            <form onSubmit={handleComment} className='w-[50%]'>
                                 <div>
                                     <textarea className='mt-2 border-2 h-32 rounded w-full' name="commentsArea" id="commentsArea" required></textarea>
                                 </div>
