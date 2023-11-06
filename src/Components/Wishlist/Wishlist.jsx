@@ -4,6 +4,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Wishlist = () => {
     let [wishlistData, setWishlistData] = useState([]);
@@ -57,11 +59,15 @@ const Wishlist = () => {
                                         <div className="md:flex md:flex-col px-4 leading-none max-w-4xl">
                                             <div className='flex flex-col md:flex-row gap-6'>
                                                 <div className="flex-none grow">
-                                                    <img
-                                                        src={list.photoUrl}
-                                                        alt="pic"
-                                                        className="h-72 w-80 object-cover rounded-md shadow-2xl transform -translate-y-4 border-4 border-[#1b1f20]"
-                                                    />
+                                                    <PhotoProvider>
+                                                        <PhotoView src={list.photoUrl}>
+                                                            <img
+                                                                src={list.photoUrl}
+                                                                alt="pic"
+                                                                className="h-72 w-80 object-cover rounded-md shadow-2xl transform -translate-y-4 border-4 border-[#1b1f20]"
+                                                            />
+                                                        </PhotoView>
+                                                    </PhotoProvider>
                                                 </div>
 
                                                 <div className="flex-col text-[#1b1f20]">

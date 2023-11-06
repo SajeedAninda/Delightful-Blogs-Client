@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const AllBlogs = () => {
     let [blogsData, setBlogsData] = useState([]);
@@ -16,7 +18,7 @@ const AllBlogs = () => {
     let { signedUser } = useAuth();
     let currentUserEmail = signedUser?.email;
 
-    
+
     const handleChange = (e) => {
         setCategoryFilter(e.target.value);
     };
@@ -125,9 +127,13 @@ const AllBlogs = () => {
                             {
                                 blogsData?.map(blogData =>
                                     <div key={blogData._id} className='flex flex-col gap-3'>
-                                        <div className='rounded-lg grow relative'>
-                                            <img className='w-full h-[400px] object-cover rounded-lg' src={blogData.photoUrl} alt="" />
-                                        </div>
+                                        <PhotoProvider>
+                                            <div className='rounded-lg grow relative'>
+                                                <PhotoView src={blogData.photoUrl}>
+                                                    <img className='w-full h-[400px] object-cover rounded-lg' src={blogData.photoUrl} alt="" />
+                                                </PhotoView>
+                                            </div>
+                                        </PhotoProvider>
 
                                         <div className='grow inline-block rounded-lg'>
                                             <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(blogData.categoryName)?.toUpperCase()}</h3>

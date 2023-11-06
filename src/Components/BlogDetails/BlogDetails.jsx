@@ -5,6 +5,8 @@ import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const BlogDetails = () => {
     let [comments, setComments] = useState([]);
@@ -51,7 +53,11 @@ const BlogDetails = () => {
         <div className='bg-[#fcf4e9]'>
             <div className='w-[90%] mx-auto py-16 flex flex-col space-y-6'>
                 <h1 className='text-5xl text-[#1b1f20] font-bold'>{title}</h1>
-                <img className='w-full object-cover rounded-lg' src={photoUrl} alt="" />
+                <PhotoProvider>
+                    <PhotoView src={photoUrl}>
+                        <img className='w-full object-cover rounded-lg' src={photoUrl} alt="" />
+                    </PhotoView>
+                </PhotoProvider>
                 <h3 className='text-2xl text-[#1b1f20] font-bold'>{shortDescription}</h3>
                 <div className='flex gap-2 justify-start items-center space-x-3'>
                     <div className='flex gap-2 items-center'>
