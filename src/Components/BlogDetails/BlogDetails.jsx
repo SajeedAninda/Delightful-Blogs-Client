@@ -5,7 +5,7 @@ import useAuth from '../Hooks/useAuth';
 
 const BlogDetails = () => {
     let blogData = useLoaderData();
-    let {_id, title, photoUrl, shortDescription, longDescription, categoryName, userPhoto, userEmail } = blogData;
+    let { _id, title, photoUrl, shortDescription, longDescription, categoryName, userPhoto, userEmail, author_name } = blogData;
     let { signedUser } = useAuth();
     let currentUserEmail = signedUser?.email;
 
@@ -18,7 +18,7 @@ const BlogDetails = () => {
                 <div className='flex gap-2 justify-start items-center space-x-3'>
                     <div className='flex gap-2 items-center'>
                         <img className='w-[70px] rounded-full' src={userPhoto} alt="" />
-                        <h3 className='text-xl text-[#1b1f20] font-medium'><span className='font-bold'>Author Email:</span> {userEmail}</h3>
+                        <h3 className='text-xl text-[#1b1f20] font-medium'><span className='font-bold'>Author:</span> {author_name}</h3>
                     </div>
                     <div>
                         <h1 className='text-4xl font-bold text-[#1b1f20]'>||</h1>
@@ -30,7 +30,7 @@ const BlogDetails = () => {
                         currentUserEmail === userEmail ?
                             <div className='rounded-lg'>
                                 <Link to={`/updateBlog/${_id}`}>
-                                <button className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Update Blog</button>
+                                    <button className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Update Blog</button>
                                 </Link>
                             </div>
                             :
@@ -38,6 +38,34 @@ const BlogDetails = () => {
                     }
                 </div>
                 <LongDescription longDescription={longDescription} />
+
+
+                {
+                    currentUserEmail === userEmail ?
+                        <div className='w-2/4 py-8 rounded-md bg-red-200'>
+                            <h2 className='px-4 text-lg text-[#1b1f20]'>Users can't comment on their own Blogs</h2>
+                        </div>
+
+                        :
+
+                        <div>
+                            <div><h2 className='text-3xl text-[#1b1f20] font-bold'>Comments</h2></div>
+                            <form className='w-[50%]'>
+                                <div>
+                                    <textarea className='mt-2 border-2 h-32 rounded w-full' name="commentsArea" id="commentsArea" required></textarea>
+                                </div>
+                                <div className='flex justify-between'>
+                                    <div className='flex items-center gap-1'>
+                                        <img className='w-[40px] rounded-full' src={signedUser?.photoURL} alt="" />
+                                        <p className='text-[#1b1f20]'>Commenting as {signedUser?.displayName}</p>
+                                    </div>
+                                    <button type='submit' className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Submit Comment</button>
+                                </div>
+                            </form>
+                        </div>
+                }
+
+
             </div>
         </div>
     );
