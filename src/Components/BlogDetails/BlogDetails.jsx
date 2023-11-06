@@ -43,7 +43,7 @@ const BlogDetails = () => {
             .catch(error => {
                 console.error('Error:', error);
             });
-    }, [])
+    }, [handleComment])
 
 
     return (
@@ -91,7 +91,7 @@ const BlogDetails = () => {
                                 <div>
                                     <textarea className='mt-2 border-2 h-32 rounded w-full' name="commentsArea" id="commentsArea" required></textarea>
                                 </div>
-                                <div className='flex justify-between'>
+                                <div className='flex justify-between mt-2 mb-4'>
                                     <div className='flex items-center gap-1'>
                                         <img className='w-[40px] rounded-full' src={signedUser?.photoURL} alt="" />
                                         <p className='text-[#1b1f20]'>Commenting as {signedUser?.displayName}</p>
@@ -104,10 +104,10 @@ const BlogDetails = () => {
                 {
                     comments.map(comment =>
                         <div className='w-2/4 py-8 px-4 mt-4 rounded-md bg-red-200 flex items-center justify-start'>
-                            <div className=''>
-                                <img className='w-[40px] rounded-full' src={comment.commentUserPhoto} alt="" />
+                            <div className='w-[10%]'>
+                                <img className='w-[60px] rounded-full' src={comment.commentUserPhoto} alt="" />
                             </div>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col w-[90%]'>
                                 <p className='px-4 text-[#1b1f20] font-bold'>{comment.commentUserName}</p>
                                 <h2 className='px-4 text-lg text-[#1b1f20]'>{comment.commentText}</h2>
                             </div>
