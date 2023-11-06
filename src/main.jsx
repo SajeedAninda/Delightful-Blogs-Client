@@ -17,6 +17,7 @@ import AllBlogs from './Components/AllBlogs/AllBlogs.jsx'
 import BlogDetails from './Components/BlogDetails/BlogDetails.jsx'
 import Wishlist from './Components/Wishlist/Wishlist.jsx'
 import UpdateBlogs from './Components/UpdateBlogs/UpdateBlogs.jsx'
+import FeaturedBlogs from './Components/FeaturedBlogs.jsx/FeaturedBlogs.jsx'
 
 const router = createBrowserRouter([
   {
@@ -66,8 +67,12 @@ const router = createBrowserRouter([
         element: <PrivateRoute><UpdateBlogs></UpdateBlogs></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`)
       },
+      {
+        path: "/featuredBlogs",
+        element: <FeaturedBlogs></FeaturedBlogs>
+      }
     ]
-  },
+  }
 ]);
 
 
@@ -75,6 +80,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
     <React.StrictMode>
       <RouterProvider router={router} />
-    </React.StrictMode>,
+    </React.StrictMode>
   </AuthProvider>
 )
