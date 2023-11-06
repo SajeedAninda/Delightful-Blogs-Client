@@ -70,7 +70,7 @@ const AddBlogs = () => {
                                             <input type="text" name="title" id="title" class="h-10 border-2 mt-1 rounded px-4 w-full bg-white" required />
                                         </div>
 
-                                        <div onChange={handleCategory} value={category} name="category" class="relative h-10 w-72 min-w-[200px] mt-6">
+                                        <div onChange={handleCategory} value={category} name="category" class="relative h-10 w-fit min-w-[200px] mt-6">
                                             <select class="peer h-full w-full rounded-[7px] border border-[#1b1f20] border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-[#1b1f20]  outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-[#1b1f20] placeholder-shown:border-t-[#1b1f20]  empty:!bg-red-500 focus:border-2 focus:border-[#1b1f20] focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50">
                                                 <option value="travel">Travel</option>
                                                 <option value="food">Food</option>
