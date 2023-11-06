@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Login = () => {
     let { login, googleLogin, gitLogin } = useAuth();
@@ -23,6 +24,10 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
+                axios.post('http://localhost:5000/jwt', user)
+                    .then(res => {
+                        console.log(res.data)
+                    })
                 navigate('/');
             })
             .catch((error) => {
@@ -47,6 +52,10 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
+                axios.post('http://localhost:5000/jwt', user)
+                    .then(res => {
+                        console.log(res.data)
+                    })
                 navigate(location?.state ? location.state : '/');
             }).catch((error) => {
                 console.log(error);
@@ -63,6 +72,10 @@ const Login = () => {
                     'Login Successful!',
                     'success'
                 )
+                axios.post('http://localhost:5000/jwt', user)
+                    .then(res => {
+                        console.log(res.data)
+                    })
                 navigate('/');
             }).catch((error) => {
                 console.log(error);
