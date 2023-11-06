@@ -58,7 +58,7 @@ const BlogDetails = () => {
                         <h3 className='text-xl text-[#1b1f20] font-medium'><span className='font-bold'>Author:</span> {author_name}</h3>
                     </div>
                     <div>
-                        <h1 className='text-4xl font-bold text-[#1b1f20]'>||</h1>
+                        <h1 className='text-4xl hidden md:block font-bold text-[#1b1f20]'>||</h1>
                     </div>
                     <div className='rounded-lg'>
                         <h3 className='py-2 px-3 text-center rounded-md w-fit text-[#1b1f20] border-2 border-[#1b1f20] font-semibold bg-[#fcf4e9]'>{(categoryName).toUpperCase()}</h3>
@@ -79,7 +79,7 @@ const BlogDetails = () => {
 
                 {
                     currentUserEmail === userEmail ?
-                        <div className='w-2/4 py-8 rounded-md bg-red-200'>
+                        <div className='w-full md:w-2/4 py-8 rounded-md bg-red-200'>
                             <h2 className='px-4 text-lg text-[#1b1f20]'>Users can't comment on their own Blogs</h2>
                         </div>
 
@@ -87,7 +87,7 @@ const BlogDetails = () => {
 
                         <div>
                             <div><h2 className='text-3xl text-[#1b1f20] font-bold'>Comments</h2></div>
-                            <form onSubmit={handleComment} className='w-[50%]'>
+                            <form onSubmit={handleComment} className='w-full md:w-[50%]'>
                                 <div>
                                     <textarea className='mt-2 border-2 h-32 rounded w-full' name="commentsArea" id="commentsArea" required></textarea>
                                 </div>
@@ -103,7 +103,7 @@ const BlogDetails = () => {
                 }
                 {
                     comments.map(comment =>
-                        <div className='w-2/4 py-8 px-4 mt-4 rounded-md bg-red-200 flex items-center justify-start'>
+                        <div className='w-full md:w-2/4 py-8 px-4 mt-4 rounded-md bg-red-200 flex items-center justify-start'>
                             <div className='w-[10%]'>
                                 <img className='w-[60px] rounded-full' src={comment.commentUserPhoto} alt="" />
                             </div>
