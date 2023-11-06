@@ -44,8 +44,7 @@ const BlogDetails = () => {
                 console.error('Error:', error);
             });
     }, [])
-    
-    console.log(comments)
+
 
     return (
         <div className='bg-[#fcf4e9]'>
@@ -102,7 +101,19 @@ const BlogDetails = () => {
                             </form>
                         </div>
                 }
-
+                {
+                    comments.map(comment =>
+                        <div className='w-2/4 py-8 px-4 mt-4 rounded-md bg-red-200 flex items-center justify-start'>
+                            <div className=''>
+                                <img className='w-[40px] rounded-full' src={comment.commentUserPhoto} alt="" />
+                            </div>
+                            <div className='flex flex-col'>
+                                <p className='px-4 text-[#1b1f20] font-bold'>{comment.commentUserName}</p>
+                                <h2 className='px-4 text-lg text-[#1b1f20]'>{comment.commentText}</h2>
+                            </div>
+                        </div>
+                    )
+                }
 
             </div>
         </div>
