@@ -8,19 +8,25 @@ import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-
-
+// import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+// import 'react-loading-skeleton/dist/skeleton.css';
+import Skeleton from '@mui/material/Skeleton';
 
 const RecentBlogs = () => {
     let { signedUser } = useAuth();
     let currentUserEmail = signedUser?.email;
-    console.log(currentUserEmail);
 
     let [recentBlogsData, setRecentBlogsData] = useState([]);
+    let [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
+        setIsLoading(true);
         axios.get("http://localhost:5000/blogsByDate")
-            .then(res => setRecentBlogsData(res.data));
-    }, [])
+            .then(res => {
+                setRecentBlogsData(res.data);
+                setIsLoading(false);
+            });
+    }, []);
 
     let handleAddToWishlist = (id) => {
         if (!signedUser) {
@@ -58,9 +64,19 @@ const RecentBlogs = () => {
                 <div>
                     <h1 className='text-center text-4xl font-bold pb-12 text-[#1b1f20]'>Our Recent Blogs</h1>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
-                    {
-                        recentBlogsData?.map(blogData =>
+
+                {isLoading ? (
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
+                        <Skeleton variant="rectangular" height={600} />
+                        <Skeleton variant="rectangular" height={600} />
+                        <Skeleton variant="rectangular" height={600} />
+                        <Skeleton variant="rectangular" height={600} />
+                        <Skeleton variant="rectangular" height={600} />
+                        <Skeleton variant="rectangular" height={600} />
+                    </div>
+                ) : (
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
+                        {recentBlogsData.map(blogData => (
                             <div key={blogData._id} className='flex flex-col gap-3'>
                                 <PhotoProvider>
                                     <div className='rounded-lg grow relative'>
@@ -92,9 +108,9 @@ const RecentBlogs = () => {
                                     </Link>
                                 </div>
                             </div>
-                        )
-                    }
-                </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
