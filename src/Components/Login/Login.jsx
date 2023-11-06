@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const Login = () => {
     let { login, googleLogin, gitLogin } = useAuth();
@@ -110,7 +111,7 @@ const Login = () => {
                                                 <label for="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
                                             </div>
                                             <div className="relative">
-                                                <button type='submit' className="bg-[#1b1f20] font-bold text-white rounded-md px-5 py-2">Login</button>
+                                                <motion.button whileHover={{ scale: 1.1 }} type='submit' className="bg-[#1b1f20] font-bold text-white rounded-md px-5 py-2">Login</motion.button>
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +126,7 @@ const Login = () => {
                                     <p className="text-center text-sm text-[#1b1f20] font-semibold">Or Sign in with</p>
                                     <div>
                                         <div className="flex items-center justify-center space-x-4 mt-3">
-                                            <button
+                                            <motion.button whileHover={{ scale: 1.1 }}
                                                 onClick={handleGithub}
                                                 className="flex items-center py-3 px-6 text-sm uppercase rounded bg-white hover:bg-gray-100 text-[#033430] border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                                             >
@@ -140,8 +141,8 @@ const Login = () => {
                                                     ></path>
                                                 </svg>
                                                 Github
-                                            </button>
-                                            <button
+                                            </motion.button>
+                                            <motion.button whileHover={{ scale: 1.1 }}
                                                 onClick={handleGoogle}
                                                 className="flex items-center py-3 px-6 text-sm uppercase rounded bg-white hover:bg-gray-100 text-[#033430] border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                                             >
@@ -168,7 +169,7 @@ const Login = () => {
                                                     />
                                                 </svg>
                                                 Google
-                                            </button>
+                                            </motion.button>
                                         </div>
                                     </div>
                                 </div>

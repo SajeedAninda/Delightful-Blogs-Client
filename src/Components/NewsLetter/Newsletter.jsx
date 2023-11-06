@@ -1,6 +1,7 @@
 import React from 'react';
 import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline'
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 let Newsletter = () => {
     let handleNewsletter = (e) => {
@@ -36,12 +37,12 @@ let Newsletter = () => {
                             <div className="mt-6 flex max-w-md gap-x-4">
                                 <input type="email" name='email' className="min-w-0 flex-auto rounded-md border border-[#1b1f20] bg-[#fcf4e9] px-3.5 py-2 text-[#1b1f20] shadow-sm ring-1 ring-inset ring-[#1b1f20] focus:ring-2 focus:ring-inset focus:ring-[#1b1f20] sm:text-sm sm:leading-6 placeholder:text-[#1b1f20]"
                                     placeholder="Enter your email"/>
-                                <button
+                                <motion.button whileHover={{ scale: 1.1 }}
                                     type="submit"
                                     className="flex-none rounded-md bg-[#1b1f20] px-3.5 py-2.5 text-sm font-semibold text-[#fcf4e9] ] shadow-sm hover:bg-[#1b1f20ad] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1b1f20]"
                                 >
                                     Subscribe
-                                </button>
+                                </motion.button>
                             </div>
                         </form>
                     </div>

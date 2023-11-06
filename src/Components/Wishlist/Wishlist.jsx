@@ -3,6 +3,7 @@ import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Wishlist = () => {
     let [wishlistData, setWishlistData] = useState([]);
@@ -71,21 +72,21 @@ const Wishlist = () => {
                                                     </div>
                                                     <p className="px-4 my-4 text-sm text-left grow">{list.shortDescription}</p>
                                                     <div className="text-md font-bold flex gap-3 grow">
-                                                        <button
+                                                        <motion.button whileHover={{ scale: 1.1 }}
                                                             onClick={() => handleDelete(list._id)}
                                                             type="button"
                                                             className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
                                                         >
                                                             Delete From list
-                                                        </button>
+                                                        </motion.button>
 
                                                         <Link to={`blogDetails/${list.previousId}`}>
-                                                            <button
+                                                            <motion.button whileHover={{ scale: 1.1 }}
                                                                 type="button"
                                                                 className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
                                                             >
                                                                 Details
-                                                            </button>
+                                                            </motion.button>
                                                         </Link>
                                                     </div>
                                                 </div>

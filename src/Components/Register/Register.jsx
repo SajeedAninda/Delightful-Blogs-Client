@@ -6,6 +6,7 @@ import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import { getAuth, updateProfile } from 'firebase/auth';
 import { app } from '../Authentication/firebase.config';
+import { motion } from 'framer-motion';
 let auth = getAuth(app);
 
 let Register = () => {
@@ -127,7 +128,7 @@ let Register = () => {
                                                 <label for="imgURL" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Image URL </label>
                                             </div>
                                             <div className="relative">
-                                                <button type='submit' className="bg-[#1b1f20] font-bold text-white rounded-md px-5 py-2">Register</button>
+                                                <motion.button whileHover={{ scale: 1.1 }} type='submit' className="bg-[#1b1f20] font-bold text-white rounded-md px-5 py-2">Register</motion.button>
                                             </div>
                                         </div>
                                     </div>

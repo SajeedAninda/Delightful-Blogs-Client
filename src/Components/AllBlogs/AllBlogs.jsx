@@ -6,6 +6,7 @@ import { BsBookmarkStar } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 const AllBlogs = () => {
     let [blogsData, setBlogsData] = useState([]);
@@ -79,7 +80,7 @@ const AllBlogs = () => {
                     <p className='w-[60%]'>Discover a diverse collection of thought-provoking blogs, from expert insights to inspiring stories, and stay informed and entertained with our extensive range of topics and articles</p>
                     <form onSubmit={handleSearch} className='w-full flex justify-center gap-2 mt-2'>
                         <input name="searchField" className="py-2 border-2 border-[#1b1f20] px-2 rounded-md placeholder:text-[#1b1f20] w-[50%] md:w-[30%]" type="text" placeholder='Search by title' />
-                        <button type='submit' className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>Search</button>
+                        <motion.button whileHover={{ scale: 1.1 }} type='submit' className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>Search</motion.button>
                     </form>
                     <div className='mt-3'>
                         <Box sx={{ minWidth: 120 }}>
@@ -136,17 +137,17 @@ const AllBlogs = () => {
 
                                         <div className='grow flex gap-3 mt-1'>
                                             <Link to={`blogDetails/${blogData._id}`}>
-                                                <button className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
+                                                <motion.button whileHover={{ scale: 1.1 }} className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
                                                     Details
                                                     <AiOutlineArrowRight></AiOutlineArrowRight>
-                                                </button>
+                                                </motion.button>
                                             </Link>
 
                                             <Link>
-                                                <button onClick={() => handleAddToWishlist(blogData._id)} className='bg-[#1b1f20]  border-2 border-[#1b1f20] rounded-lg font-bold flex gap-2 items-center text-white px-3 py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
+                                                <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleAddToWishlist(blogData._id)} className='bg-[#1b1f20]  border-2 border-[#1b1f20] rounded-lg font-bold flex gap-2 items-center text-white px-3 py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
                                                     Add Wishlist
                                                     <BsBookmarkStar></BsBookmarkStar>
-                                                </button>
+                                                </motion.button>
                                             </Link>
                                         </div>
                                     </div>

@@ -4,6 +4,7 @@ import LongDescription from './LongDescription';
 import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 const BlogDetails = () => {
     let [comments, setComments] = useState([]);
@@ -67,7 +68,7 @@ const BlogDetails = () => {
                         currentUserEmail === userEmail ?
                             <div className='rounded-lg'>
                                 <Link to={`/updateBlog/${_id}`}>
-                                    <button className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Update Blog</button>
+                                    <motion.button whileHover={{ scale: 1.1 }} className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Update Blog</motion.button>
                                 </Link>
                             </div>
                             :
@@ -96,7 +97,7 @@ const BlogDetails = () => {
                                         <img className='w-[40px] rounded-full' src={signedUser?.photoURL} alt="" />
                                         <p className='text-[#1b1f20]'>Commenting as {signedUser?.displayName}</p>
                                     </div>
-                                    <button type='submit' className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Submit Comment</button>
+                                    <motion.button whileHover={{ scale: 1.1 }} type='submit' className='py-2 px-4 text-center rounded-md w-fit text-[#fcf4e9] border-2 border-[#1b1f20] font-bold bg-[#1b1f20] hover:text-[#1b1f20] hover:bg-[#fcf4e9]'>Submit Comment</motion.button>
                                 </div>
                             </form>
                         </div>

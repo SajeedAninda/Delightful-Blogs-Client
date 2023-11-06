@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 const UpdateBlogs = () => {
     let blogsData = useLoaderData();
@@ -94,9 +95,9 @@ const UpdateBlogs = () => {
                                             <textarea defaultValue={longDescription} className='mt-1 border-2 h-32 rounded w-full' name="longDescription" id="longDescription" required></textarea>
                                         </div>
 
-                                        <button type='submit' class="md:col-span-5 border-2 border-[#1b1f20] py-2 font-bold bg-[#1b1f20] text-[#fcf4e9] rounded-lg text-lg hover:bg-[#fcf4e9] hover:text-[#1b1f20]">
+                                        <motion.button whileHover={{ scale: 1.1 }} type='submit' class="md:col-span-5 border-2 border-[#1b1f20] py-2 font-bold bg-[#1b1f20] text-[#fcf4e9] rounded-lg text-lg hover:bg-[#fcf4e9] hover:text-[#1b1f20]">
                                             Update
-                                        </button>
+                                        </motion.button>
                                     </form>
                                 </div>
                             </div>

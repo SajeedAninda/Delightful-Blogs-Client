@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from "../../assets/Logo/logo.png"
 import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
     let { signedUser, loading, logOut } = useAuth();
@@ -81,21 +82,21 @@ const Navbar = () => {
                                     <img className='w-[30px] md:w-[50px] rounded-full' src={`${signedUser.photoURL}`} />
                                 </div>
                                 <div className='flex flex-col justify-center'>
-                                    <button onClick={handleLogout} className='bg-[#fcf4e9] text-[#1b1f20] font-bold border-2 border-[#1b1f20] px-4 py-2 rounded-lg hover:bg-[#1b1f20] hover:text-[#fcf4e9] hover:border-2 hover:border-[#fcf4e9]'>Logout</button>
+                                    <motion.button whileHover={{ scale: 1.1 }} onClick={handleLogout} className='bg-[#fcf4e9] text-[#1b1f20] font-bold border-2 border-[#1b1f20] px-4 py-2 rounded-lg hover:bg-[#1b1f20] hover:text-[#fcf4e9] hover:border-2 hover:border-[#fcf4e9]'>Logout</motion.button>
                                 </div>
                             </div>
                             :
                             <div className='flex gap-2 justify-end'>
                                 <Link to={"/login"}>
-                                    <button className='bg-[#fcf4e9] text-[#1b1f20] py-2 px-4 rounded-md font-bold border-2 border-[#1b1f20] hover:bg-[#1b1f20] hover:text-[#fcf4e9] hover:border-2 hover:border-[#fcf4e9]'>
+                                    <motion.button whileHover={{ scale: 1.1 }} className='bg-[#fcf4e9] text-[#1b1f20] py-2 px-4 rounded-md font-bold border-2 border-[#1b1f20] hover:bg-[#1b1f20] hover:text-[#fcf4e9] hover:border-2 hover:border-[#fcf4e9]'>
                                         Login
-                                    </button>
+                                    </motion.button>
                                 </Link>
 
                                 <Link to={"/register"}>
-                                    <button className='bg-[#fcf4e9] text-[#1b1f20] py-2 px-4 rounded-md font-bold border-2 border-[#1b1f20] hover:bg-[#1b1f20] hover:text-[#fcf4e9] hover:border-2 hover:border-[#fcf4e9]'>
+                                    <motion.button whileHover={{ scale: 1.1 }}className='bg-[#fcf4e9] text-[#1b1f20] py-2 px-4 rounded-md font-bold border-2 border-[#1b1f20] hover:bg-[#1b1f20] hover:text-[#fcf4e9] hover:border-2 hover:border-[#fcf4e9]'>
                                         Register
-                                    </button>
+                                    </motion.button>
                                 </Link>
                             </div>
                     }

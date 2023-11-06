@@ -3,6 +3,7 @@ import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const AddBlogs = () => {
     let [category, setCategory] = useState("travel");
@@ -100,9 +101,9 @@ const AddBlogs = () => {
                                             <textarea className='mt-1 border-2 h-32 rounded w-full' name="longDescription" id="longDescription" required></textarea>
                                         </div>
 
-                                        <button type='submit' class="md:col-span-5 border-2 border-[#1b1f20] py-2 font-bold bg-[#1b1f20] text-[#fcf4e9] rounded-lg text-lg hover:bg-[#fcf4e9] hover:text-[#1b1f20]">
+                                        <motion.button whileHover={{ scale: 1.1 }} type='submit' class="md:col-span-5 border-2 border-[#1b1f20] py-2 font-bold bg-[#1b1f20] text-[#fcf4e9] rounded-lg text-lg hover:bg-[#fcf4e9] hover:text-[#1b1f20]">
                                             Submit
-                                        </button>
+                                        </motion.button>
                                     </form>
                                 </div>
                             </div>
