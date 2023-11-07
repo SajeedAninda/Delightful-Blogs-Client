@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import Skeleton from '@mui/material/Skeleton';
 
 const AllBlogs = () => {
     let [blogsData, setBlogsData] = useState([]);
@@ -73,6 +74,9 @@ const AllBlogs = () => {
             });
     }
 
+    let blogsCount = blogsData.length;
+    let blogsCountArr = [...Array(blogsCount).keys()];
+    console.log(blogsCountArr);
 
     return (
         <div className='bg-[#fcf4e9] py-12'>
@@ -119,8 +123,10 @@ const AllBlogs = () => {
                 </div>
                 {
                     loading ?
-                        <div className='flex justify-center h-screen items-center'>
-                            <span>Loading....</span>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
+                            {
+                                blogsCountArr.map(count => <Skeleton variant="rectangular" height={600} />)
+                            }
                         </div>
                         :
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>

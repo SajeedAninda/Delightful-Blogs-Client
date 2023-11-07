@@ -8,8 +8,6 @@ import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-// import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-// import 'react-loading-skeleton/dist/skeleton.css';
 import Skeleton from '@mui/material/Skeleton';
 
 const RecentBlogs = () => {
