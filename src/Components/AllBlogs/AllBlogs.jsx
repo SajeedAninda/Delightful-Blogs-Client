@@ -76,7 +76,6 @@ const AllBlogs = () => {
 
     let blogsCount = blogsData.length;
     let blogsCountArr = [...Array(blogsCount).keys()];
-    console.log(blogsCountArr);
 
     return (
         <div className='bg-[#fcf4e9] py-12'>
@@ -123,9 +122,25 @@ const AllBlogs = () => {
                 </div>
                 {
                     loading ?
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
+                        <div>
                             {
-                                blogsCountArr.map(count => <Skeleton variant="rectangular" height={600} />)
+                                !blogsCount ?
+                                    (
+                                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
+                                            <Skeleton variant="rectangular" height={600} />
+                                            <Skeleton variant="rectangular" height={600} />
+                                            <Skeleton variant="rectangular" height={600} />
+                                            <Skeleton variant="rectangular" height={600} />
+                                            <Skeleton variant="rectangular" height={600} />
+                                            <Skeleton variant="rectangular" height={600} />
+                                        </div>
+                                    )
+                                    :
+                                    (
+                                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14'>
+                                            {blogsCountArr.map(count => <Skeleton variant="rectangular" height={600} />)}
+                                        </div>
+                                    )
                             }
                         </div>
                         :
