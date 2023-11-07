@@ -18,11 +18,13 @@ import BlogDetails from './Components/BlogDetails/BlogDetails.jsx'
 import Wishlist from './Components/Wishlist/Wishlist.jsx'
 import UpdateBlogs from './Components/UpdateBlogs/UpdateBlogs.jsx'
 import FeaturedBlogs from './Components/FeaturedBlogs.jsx/FeaturedBlogs.jsx'
+import ErrorPage from './Components/ErrorPage/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
