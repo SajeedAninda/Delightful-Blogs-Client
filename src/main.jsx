@@ -73,7 +73,9 @@ const router = createBrowserRouter([
       {
         path: "/updateBlog/:id",
         element: <PrivateRoute><UpdateBlogs></UpdateBlogs></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://delightful-blogs-server.vercel.app/updateBlog/${params.id}`)
+        loader: ({ params }) => fetch(`https://delightful-blogs-server.vercel.app/updateBlog/${params.id}`,{
+          credentials: 'include',
+        })
       },
       {
         path: "/featuredBlogs",
