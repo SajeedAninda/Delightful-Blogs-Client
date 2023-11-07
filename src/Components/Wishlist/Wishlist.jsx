@@ -111,7 +111,7 @@ const Wishlist = () => {
                                                                     type="button"
                                                                     className="border border-[#1b1f20] text-[#1b1f20] rounded-md px-5 py-3 mt-4 transition duration-300 ease select-none hover:text-white hover:bg-[#1b1f20] focus:outline-none focus:shadow-outline"
                                                                 >
-                                                                    Delete From list
+                                                                    Remove from Wishlist
                                                                 </motion.button>
 
                                                                 <Link to={`blogDetails/${list.previousId}`}>
