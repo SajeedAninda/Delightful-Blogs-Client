@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from "../../assets/Logo/logo.png"
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -18,10 +19,11 @@ const Footer = () => {
                             <h2 class="mb-6 text-sm font-semibold text-[#fcf4e9] uppercase">Resources</h2>
                             <ul class="text-[#fcf4e9] dark:text-[#fcf4e9] font-medium">
                                 <li class="mb-4">
-                                    <a href="#" class="hover:underline">All Blogs</a>
+                                    <a href="#" ></a>
+                                    <Link to={"/allBlogs"} class="hover:underline">All Blogs</Link>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline">Featured Blogs</a>
+                                <Link to={"/featuredBlogs"} class="hover:underline">Featured Blogs</Link>
                                 </li>
                             </ul>
                         </div>

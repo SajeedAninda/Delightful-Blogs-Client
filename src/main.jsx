@@ -48,14 +48,14 @@ const router = createBrowserRouter([
       {
         path: "/blogDetails/:id",
         element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`, {
+        loader: ({ params }) => fetch(`https://delightful-blogs-server.vercel.app/blogDetails/${params.id}`, {
           credentials: 'include',
         })
       },
       {
         path: "allBlogs/blogDetails/:id",
         element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`,{
+        loader: ({ params }) => fetch(`https://delightful-blogs-server.vercel.app/blogDetails/${params.id}`,{
           credentials: 'include',
         })
       },
@@ -66,14 +66,14 @@ const router = createBrowserRouter([
       {
         path: "wishlist/blogDetails/:id",
         element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/blogDetails/${params.id}`,{
+        loader: ({ params }) => fetch(`https://delightful-blogs-server.vercel.app/blogDetails/${params.id}`,{
           credentials: 'include',
         })
       },
       {
         path: "/updateBlog/:id",
         element: <PrivateRoute><UpdateBlogs></UpdateBlogs></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/updateBlog/${params.id}`)
+        loader: ({ params }) => fetch(`https://delightful-blogs-server.vercel.app/updateBlog/${params.id}`)
       },
       {
         path: "/featuredBlogs",

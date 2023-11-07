@@ -23,7 +23,7 @@ const BlogDetails = () => {
         let commentText = e.target.commentsArea.value;
         let commentsData = { commentText, commentUserName, commentUserPhoto, commentedBlogId };
 
-        axios.post("http://localhost:5000/comments", commentsData)
+        axios.post("https://delightful-blogs-server.vercel.app/comments", commentsData)
             .then(response => {
                 console.log(response.data);
                 if (response.data.insertedId) {
@@ -38,7 +38,7 @@ const BlogDetails = () => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/comments?blogId=${_id}`, { withCredentials: true })
+        axios.get(`https://delightful-blogs-server.vercel.app/comments?blogId=${_id}`, { withCredentials: true })
             .then(response => {
                 setComments(response.data);
 

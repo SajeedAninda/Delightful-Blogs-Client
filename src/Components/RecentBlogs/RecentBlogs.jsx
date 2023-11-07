@@ -19,7 +19,7 @@ const RecentBlogs = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        axios.get("http://localhost:5000/blogsByDate")
+        axios.get("https://delightful-blogs-server.vercel.app/blogsByDate")
             .then(res => {
                 setRecentBlogsData(res.data);
                 setIsLoading(false);
@@ -40,7 +40,7 @@ const RecentBlogs = () => {
         let previousId = _id;
         let blogItems = { title, photoUrl, shortDescription, categoryName, currentUserEmail, previousId };
 
-        axios.post('http://localhost:5000/wishlist', blogItems)
+        axios.post('https://delightful-blogs-server.vercel.app/wishlist', blogItems)
             .then(response => {
                 console.log('Post request successful', response.data);
                 if (response.data.insertedId) {

@@ -24,7 +24,7 @@ const UpdateBlogs = () => {
         let updateData = { title, categoryName, photoUrl, shortDescription, longDescription };
 
 
-        axios.patch(`http://localhost:5000/updateBlog/${_id}`, updateData, { withCredentials: true }, {
+        axios.patch(`https://delightful-blogs-server.vercel.app/updateBlog/${_id}`, updateData, { withCredentials: true }, {
             headers: {
                 'Content-Type': 'application/json',
             },
