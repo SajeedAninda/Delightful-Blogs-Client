@@ -10,7 +10,7 @@ const Navbar = () => {
     let handleLogout = () => {
         logOut()
             .then(() => {
-                axios.post("https://delightful-blogs-server.vercel.app/logout", signedUser?.email, { withCredentials: true })
+                axios.post("http://localhost:5000/logout", signedUser?.email, { withCredentials: true })
                     .res(console.log(res.data));
             }).catch((error) => {
                 console.log(error);

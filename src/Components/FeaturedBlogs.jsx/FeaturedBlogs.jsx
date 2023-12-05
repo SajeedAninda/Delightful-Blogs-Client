@@ -7,7 +7,7 @@ const FeaturedBlogs = () => {
     let [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get("https://delightful-blogs-server.vercel.app/topTenBlogs")
+        axios.get("http://localhost:5000/topTenBlogs")
             .then(res => {
                 setData(res.data);
             })

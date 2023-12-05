@@ -33,7 +33,7 @@ const AllBlogs = () => {
     useEffect(() => {
         setLoading(true);
 
-        axios.get(`https://delightful-blogs-server.vercel.app/blogs?title=${search}&categoryName=${categoryFilter}`)
+        axios.get(`http://localhost:5000/blogs?title=${search}&categoryName=${categoryFilter}`)
             .then((res) => {
                 setBlogsData(res.data);
                 setLoading(false);
@@ -58,7 +58,7 @@ const AllBlogs = () => {
         let previousId = _id;
         let blogItems = { title, photoUrl, shortDescription, categoryName, currentUserEmail, previousId };
 
-        axios.post('https://delightful-blogs-server.vercel.app/wishlist', blogItems)
+        axios.post('http://localhost:5000/wishlist', blogItems)
             .then(response => {
                 console.log('Post request successful', response.data);
                 if (response.data.insertedId) {
@@ -67,6 +67,13 @@ const AllBlogs = () => {
                         'Added to wishlist',
                         'success'
                     )
+                }
+                if (response.data.success == false) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Blog Already Exists in Wishlist!"
+                    });
                 }
             })
             .catch(error => {
@@ -172,7 +179,7 @@ const AllBlogs = () => {
 
                                             <Link>
                                                 <motion.button whileHover={{ scale: 1.1 }} onClick={() => handleAddToWishlist(blogData._id)} className='bg-[#1b1f20]  border-2 border-[#1b1f20] rounded-lg font-bold flex gap-2 items-center text-white px-3 py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>
-                                                    Add Wishlist
+                                                    Add to Wishlist
                                                     <BsBookmarkStar></BsBookmarkStar>
                                                 </motion.button>
                                             </Link>
