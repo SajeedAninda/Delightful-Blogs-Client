@@ -28,7 +28,7 @@ const AddBlogs = () => {
         let longDescription = e.target.longDescription.value;
         let blog = { title, categoryName, photoUrl, shortDescription, longDescription, userEmail, userPhoto, postedAt, author_name }
 
-        axios.post("http://localhost:5000/blogs", blog, { withCredentials: true }, {
+        axios.post("https://delightful-blogs-server.vercel.app/blogs", blog, { withCredentials: true }, {
             headers: {
                 'Content-Type': 'application/json',
             },

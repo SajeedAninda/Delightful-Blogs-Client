@@ -17,7 +17,7 @@ const Wishlist = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:5000/wishlist?email=${loggedUserEmail}`, { withCredentials: true })
+        axios.get(`https://delightful-blogs-server.vercel.app/wishlist?email=${loggedUserEmail}`, { withCredentials: true })
             .then(response => {
                 setWishlistData(response.data);
                 setLoading(false);
@@ -28,7 +28,7 @@ const Wishlist = () => {
     }, [loggedUserEmail]);
 
     let handleDelete = (id) => {
-        axios.delete(`http://localhost:5000/wishlist/${id}`)
+        axios.delete(`https://delightful-blogs-server.vercel.app/wishlist/${id}`)
             .then(response => {
                 console.log('Delete request successful', response.data);
                 if (response.data.deletedCount > 0) {
