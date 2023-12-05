@@ -91,8 +91,10 @@ const AllBlogs = () => {
                     <h1 className='text-center text-4xl font-bold text-[#1b1f20]'>All Blogs</h1>
                     <p className='w-[60%]'>Discover a diverse collection of thought-provoking blogs, from expert insights to inspiring stories, and stay informed and entertained with our extensive range of topics and articles</p>
                     <form onSubmit={handleSearch} className='w-full flex justify-center gap-2 mt-2'>
-                        <input name="searchField" className="py-2 border-2 border-[#1b1f20] px-2 rounded-md placeholder:text-[#1b1f20] w-[50%] md:w-[30%]" type="text" placeholder='Search by title' />
-                        <motion.button whileHover={{ scale: 1.1 }} type='submit' className='bg-[#1b1f20] border-2 border-[#1b1f20] px-3 rounded-lg font-bold flex gap-2 items-center text-white py-2 hover:bg-[#fcf4e9] hover:text-[#1b1f20]'>Search</motion.button>
+                        <input name="searchField" className="py-2 border-2 border-[#1b1f20] px-2 rounded-md placeholder:text-[#1b1f20] w-[50%] md:w-[30%]" type="text" placeholder='Search by title'
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
                     </form>
                     <div className='mt-3'>
                         <Box sx={{ minWidth: 120 }}>
