@@ -1,6 +1,10 @@
 # Delightful-Blogs
 "Delightful Blogs" is a web platform that provides a delightful and immersive experience for bloggers and readers alike. It serves as a space where bloggers can create and share captivating written content, while readers can explore a wide range of engaging and informative blog posts.
 
+## Repo Intro
+This Repo Contains the client side code of the Delightful Blogs Project
+
+## Table of Contents
 - [Features](#features)
 - [Frontend](#frontend)
   - [Technologies Used](#technologies-used)
