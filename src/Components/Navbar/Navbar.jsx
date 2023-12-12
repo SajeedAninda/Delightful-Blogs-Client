@@ -63,6 +63,15 @@ const Navbar = () => {
                     </NavLink>
 
                     <NavLink
+                        to={"/myBlogs"}
+                        className={({ isActive, isPending }) =>
+                            isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"
+                        }
+                    >
+                        My Blogs
+                    </NavLink>
+
+                    <NavLink
                         to={"/wishlist"}
                         className={({ isActive, isPending }) =>
                             isPending ? "pending" : isActive ? "border-2 border-[#fcf4e9] p-2  font-bold text-base md:text-lg text-[#fcf4e9] rounded-md hover:text-[#fcf4e9a1]" : "text-base md:text-lg p-2 text-[#fcf4e9] hover:text-[#fcf4e9a1]"

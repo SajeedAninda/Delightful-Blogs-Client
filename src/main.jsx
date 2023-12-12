@@ -19,6 +19,7 @@ import Wishlist from './Components/Wishlist/Wishlist.jsx'
 import UpdateBlogs from './Components/UpdateBlogs/UpdateBlogs.jsx'
 import FeaturedBlogs from './Components/FeaturedBlogs.jsx/FeaturedBlogs.jsx'
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx'
+import MyBlogs from './Components/MyBlogs/MyBlogs.jsx'
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,17 @@ const router = createBrowserRouter([
       {
         path: "/featuredBlogs",
         element: <FeaturedBlogs></FeaturedBlogs>
+      },
+      {
+        path: "/myBlogs",
+        element: <PrivateRoute><MyBlogs></MyBlogs></PrivateRoute>
+      },
+      {
+        path: "myBlogs/blogDetails/:id",
+        element: <PrivateRoute><BlogDetails></BlogDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://delightful-blogs-server.vercel.app/blogDetails/${params.id}`,{
+          credentials: 'include',
+        })
       }
     ]
   }
