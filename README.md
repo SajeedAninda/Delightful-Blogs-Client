@@ -23,6 +23,7 @@ This Repo Contains the client side code of the Delightful Blogs Project
 - Blog Details page where a logged in user can read full blogs, see all the details and comment on blogs.
 - Update Blogs route where a user can update his/her particular blog.
 - A logged in user can add a Blog to wishlist and in the wishlist page user can see their specific wishlisted blogs or remove them.
+- My Blogs Page where user can see his added Blogs
 - Featured Blog section comprises of the top ten blogs based on their sizes.
 - Private Routes and JWT Protected API's to secure unauthorized access.
 - Full Screen preview mode for all the images across the website on a single click.
